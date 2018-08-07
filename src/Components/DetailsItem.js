@@ -16,9 +16,10 @@ class Details extends Component{
     },
   };
   renderBackground = ()=>{
-    const day = new Date().getHours();
-    if(day>17) return (<Image  style={styles.background_image} source={require('../../image/night.png')} />)
-    if(day<17) return (<Image  style={styles.background_image} source={require('../../image/after_noon.png')} />)
+    const {params} = this.props.navigation.state;
+    if(params.weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('../../image/cloud.jpg')} />)
+    if(params.weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('../../image/Rain.jpg')} />)
+    return (<Image  style={styles.background_image} source={require('../../image/Sun.jpg')} />)
   }
   getDay = (day)=>{
       const d = new Date(day*1000);

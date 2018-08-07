@@ -17,9 +17,10 @@ class App extends Component{
     },
   };
   renderBackground = ()=>{
-    const day = new Date().getHours();
-    if(day>17) return (<Image  style={styles.background_image} source={require('./image/night.png')} />)
-    if(day<17) return (<Image  style={styles.background_image} source={require('./image/after_noon.png')} />)
+    const {list} = this.props.data;
+    if(list[0].weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('./image/cloud.jpg')} />)
+    if(list[0].weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('./image/Rain.jpg')} />)
+    return (<Image  style={styles.background_image} source={require('./image/Sun.jpg')} />)
   }
   render(){
     const {isLoading,data,error,navigation} = this.props;
