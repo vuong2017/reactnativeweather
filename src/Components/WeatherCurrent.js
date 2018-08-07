@@ -15,7 +15,7 @@ class WeatherCurrent extends Component{
 }
 const styles = StyleSheet.create({
   WeatherCurrent:{
-    flex:0.4,
+    flex:0.3,
     flexDirection:'column',
     alignItems:'center',
     justifyContent:'flex-end'

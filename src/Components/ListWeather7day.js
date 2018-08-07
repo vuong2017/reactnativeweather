@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Platform,StyleSheet,Text,View,Image,Dimensions} from 'react-native';
+import {Platform,StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
 import api from '../Api/api';
 import PropTypes from 'prop-types';
 class ListWeather7day extends Component{
@@ -7,12 +7,15 @@ class ListWeather7day extends Component{
       const d = new Date(day*1000);
       return api.weather.getDay(d.getDay(),d.getDate());
   }
+  onPress = (e) => {
+      this.props.navigation.navigate('Details',{...e,city:this.props.city});
+  }
   renderItem = ()=>{
     const {data} = this.props;
     const Item = data.map((e,i)=>{
       this.getDay(e.dt);
       return (
-        <View key={i} style={styles.ListItem7day}>
+        <TouchableOpacity key={i} style={styles.ListItem7day} onPress={()=>this.onPress(e)}>
           <View style={styles.day}>
             <Text style={styles.TextFonts}>{this.getDay(e.dt).day}, Ngày {this.getDay(e.dt).time}</Text>
           </View>
@@ -25,7 +28,7 @@ class ListWeather7day extends Component{
               : <Image source={require('../../image/sun.png')} />
             }
           </View>
-        </View>
+        </TouchableOpacity>
       )
     })
     return Item;
@@ -40,14 +43,18 @@ class ListWeather7day extends Component{
 }
 const styles = StyleSheet.create({
   ListWeather7day:{
-    flex:0.6,
+    flex:0.7,
     flexDirection:'column'
   },
   ListItem7day:{
     flex:1,
     flexDirection:'row',
     paddingLeft:10,
-    paddingRight:10
+    paddingRight:10,
+    borderRadius: 4,
+    borderWidth: 0.3,
+    borderColor: '#f7f7f7',
+    margin:5
   },
   TempAndImg:{
     flex:0.3,
@@ -62,7 +69,7 @@ const styles = StyleSheet.create({
   },
   TextFonts:{
     fontFamily:'Lobster-Regular',
-    fontSize:17,
+    fontSize:20,
     paddingRight:15,
     color:'#f7f4f4'
   }
