@@ -17,10 +17,10 @@ class App extends Component{
     },
   };
   renderBackground = ()=>{
-    const {list} = this.props.data;
-    if(list[0].weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('./image/cloud.jpg')} />)
-    if(list[0].weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('./image/Rain.jpg')} />)
-    return (<Image  style={styles.background_image} source={require('./image/Sun.jpg')} />)
+    const {data} = this.props;
+    if(data.list[0].weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('./image/BGCloud.jpg')} />)
+    if(data.list[0].weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('./image/BGRain.jpg')} />)
+    return (<Image  style={styles.background_image} source={require('./image/BGSun.jpg')} />)
   }
   render(){
     const {isLoading,data,error,navigation} = this.props;

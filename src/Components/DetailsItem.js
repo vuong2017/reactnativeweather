@@ -17,9 +17,9 @@ class Details extends Component{
   };
   renderBackground = ()=>{
     const {params} = this.props.navigation.state;
-    if(params.weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('../../image/cloud.jpg')} />)
-    if(params.weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('../../image/Rain.jpg')} />)
-    return (<Image  style={styles.background_image} source={require('../../image/Sun.jpg')} />)
+    if(params.weather[0].main === 'Clear') return (<Image  style={styles.background_image} source={require('../../image/BGCloud.jpg')} />)
+    if(params.weather[0].main === 'Rain') return (<Image  style={styles.background_image} source={require('../../image/BGRain.jpg')} />)
+    return (<Image  style={styles.background_image} source={require('../../image/BGSun.jpg')} />)
   }
   getDay = (day)=>{
       const d = new Date(day*1000);
