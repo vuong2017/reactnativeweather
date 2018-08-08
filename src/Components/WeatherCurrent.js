@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Platform,StyleSheet,Text,View} from 'react-native';
+import {Platform,StyleSheet,Text,View,Image} from 'react-native';
 import PropTypes from 'prop-types';
 class WeatherCurrent extends Component{
   render(){
@@ -8,6 +8,12 @@ class WeatherCurrent extends Component{
       <View style={styles.WeatherCurrent}>
         <Text style={{fontFamily:'Lobster-Regular',fontSize:30,color:'white'}}>{data.time.day}, {data.time.time}</Text>
         <Text style={{fontFamily:'Lobster-Regular',fontSize:30,color:'white'}}>{data.name}</Text>
+        {data.main === 'Clear'
+          ? <Image source={require('../../image/DTcloud.png')} />
+          : data.main === 'Rain'
+          ? <Image source={require('../../image/DTrain.png')} />
+          : <Image source={require('../../image/DTsun.png')} />
+        }
         <Text style={styles.TextFonts}>{Math.round(data.temp)}°C</Text>
       </View>
     );
@@ -15,10 +21,9 @@ class WeatherCurrent extends Component{
 }
 const styles = StyleSheet.create({
   WeatherCurrent:{
-    flex:0.3,
+    marginTop:20,
     flexDirection:'column',
-    alignItems:'center',
-    justifyContent:'flex-end'
+    alignItems:'center'
   },
   TextFonts:{
     fontFamily:'Lobster-Regular',

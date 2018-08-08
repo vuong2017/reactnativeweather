@@ -43,18 +43,15 @@ class ListWeather7day extends Component{
 }
 const styles = StyleSheet.create({
   ListWeather7day:{
-    flex:0.7,
     flexDirection:'column'
   },
   ListItem7day:{
     flex:1,
     flexDirection:'row',
-    paddingLeft:10,
-    paddingRight:10,
-    borderRadius: 4,
-    borderWidth: 0.3,
-    borderColor: '#f7f7f7',
-    margin:5
+    padding:10,
+    marginTop:5,
+    marginBottom:5,
+    backgroundColor: 'rgba(48, 65, 79, 0.48)'
   },
   TempAndImg:{
     flex:0.3,
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
   },
   TextFonts:{
     fontFamily:'Lobster-Regular',
-    fontSize:20,
+    fontSize:17,
     paddingRight:15,
     color:'#f7f4f4'
   }

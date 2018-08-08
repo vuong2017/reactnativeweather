@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Platform,StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
+import {Platform,StyleSheet,Text,View,Image,TouchableOpacity,ScrollView} from 'react-native';
 import api from '../Api/api';
 class Details extends Component{
   constructor(props){
@@ -32,6 +32,7 @@ class Details extends Component{
           <View style={styles.background}>
             {this.renderBackground()}
           </View>
+          <ScrollView>
           <View style={styles.infoTemp}>
             <Text style={styles.TextFonts}>{this.getDay(params.dt).day}, Ngày {this.getDay(params.dt).time}</Text>
             <Text style={styles.TextFonts}>{params.city}</Text>
@@ -86,6 +87,7 @@ class Details extends Component{
               </View>
 
           </View>
+          </ScrollView>
       </View>
     );
   }
@@ -96,24 +98,22 @@ const styles = StyleSheet.create({
     flexDirection:'column'
   },
   infoTemp:{
-    flex:0.6,
-    paddingTop:20,
+    marginTop:20,
     flexDirection:'column',
     alignItems:'center'
   },
   forecast:{
-    flex:0.35,
     flexDirection:'column',
-    borderTopWidth:0.5,
-    borderBottomWidth:0.5,
     borderColor:'white',
-    paddingLeft:25,
-    paddingRight:25,
     justifyContent:'center'
   },
   forecastTitle:{
     flex:0.2,
-    flexDirection:'row'
+    flexDirection:'row',
+    backgroundColor: 'rgba(48, 65, 79, 0.48)',
+    marginTop:5,
+    marginBottom:5,
+    padding:10
   },
   TextFonts:{
     fontFamily:'Lobster-Regular',

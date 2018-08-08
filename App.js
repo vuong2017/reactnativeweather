@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Platform,StyleSheet,Text,View,Dimensions,Image,ActivityIndicator,Button} from 'react-native';
+import {Platform,StyleSheet,Text,View,Dimensions,Image,ActivityIndicator,Button,ScrollView} from 'react-native';
 import  WeatherCurrent from './src/Components/WeatherCurrent';
 import  ListWeather7day from './src/Components/ListWeather7day';
 import {FetchDataWeather} from './src/Redux/ActionCreators';
@@ -42,11 +42,14 @@ class App extends Component{
     }
     return(
       <View style={styles.container}>
-          <View style={styles.background}>
-            {this.renderBackground()}
-          </View>
+        <View style={styles.background}>
+          {this.renderBackground()}
+        </View>
+        <ScrollView>
           <WeatherCurrent  data={data.datacurrent} />
           <ListWeather7day navigation={navigation} city={data.city.name} data={data.list} />
+        </ScrollView>
+
       </View>
     );
   }
