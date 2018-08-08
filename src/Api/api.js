@@ -1,3 +1,4 @@
+import SystemSetting from 'react-native-system-setting';
 const getDay = (day,time)=>{;
   switch (day) {
     case 0: return {day:"Chủ Nhật",time:time};
@@ -26,13 +27,16 @@ const getCurrentLocation = ()=>{
           let postion =  {latitude: position.coords.latitude,longitude: position.coords.longitude};
           result(postion);
         },
-        (error) => err('Bạn chưa bật định vị'),
+        (error) => {
+          err("Không tìm thấy vị trí hiên tại của bạn!");
+        },
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
       );
   })
 }
 export default {
   weather:{
+    isLocation: ()=>SystemSetting.isLocationEnabled(),
     fetchdata : (url)=>fetch(url).then(response=>response.json()),
     getLocation:()=>getCurrentLocation(),
     newDate:()=>newDate(),

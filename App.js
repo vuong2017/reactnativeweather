@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Platform,StyleSheet,Text,View,Dimensions,Image,ActivityIndicator} from 'react-native';
+import {Platform,StyleSheet,Text,View,Dimensions,Image,ActivityIndicator,Button} from 'react-native';
 import  WeatherCurrent from './src/Components/WeatherCurrent';
 import  ListWeather7day from './src/Components/ListWeather7day';
+import {FetchDataWeather} from './src/Redux/ActionCreators';
 import PropTypes from 'prop-types';
 class App extends Component{
   static navigationOptions = {
@@ -34,7 +35,8 @@ class App extends Component{
     if(error){
       return (
         <View style={{flex:1,justifyContent:'center'}}>
-          <Text style={styles.TextFonts}>{error}</Text>
+        <Text style={styles.TextFonts}>{error}</Text>
+        <Button  title={"Refresh"} onPress={()=>this.props.dispatch(FetchDataWeather())} />
         </View>
       )
     }
